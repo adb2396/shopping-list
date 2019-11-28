@@ -1,0 +1,26 @@
+{
+  "name": "shopping-list",
+  "version": "1.0.0",
+  "description": "Shopping list build with the MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adb2396/shopping-list.git"
+  },
+  "author": "Akshay Bhamare",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adb2396/shopping-list/issues"
+  },
+  "homepage": "https://github.com/adb2396/shopping-list#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.12"
+  }
+}
