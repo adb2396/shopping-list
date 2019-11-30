@@ -22,9 +22,9 @@ class ShoppingList extends React.Component {
             <Container>
                 <ListGroup>
                     <TransitionGroup className="shopping-list">
-                        {items.map( ({ id, name }) => {
+                        {items.map( ({ _id, name }) => {
                             return <CSSTransition 
-                                key={id} 
+                                key={_id} 
                                 timeout={500}
                                 classNames="fade" 
                             >   
@@ -33,7 +33,7 @@ class ShoppingList extends React.Component {
                                         className="remove-btn"
                                         color="danger"
                                         size="sm"
-                                        onClick={ () => this.props.deleteItem(id) }
+                                        onClick={ () => this.props.deleteItem(_id) }
                                     >
                                         &times;
                                     </Button>
