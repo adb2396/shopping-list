@@ -10,7 +10,8 @@ import {
     Input
 } from 'reactstrap'
 import { connect } from 'react-redux';
-import { addItems } from '../actions/itemActions';
+import { addItem } from '../actions/itemActions';
+import uuid from 'uuid';
 
 class ItemModal extends React.Component {
 
@@ -25,6 +26,22 @@ class ItemModal extends React.Component {
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     };
+
+    onSubmit = (e) => {
+        e.preventDefault();
+
+        const newItem  = { 
+            id: uuid(),
+            name: this.state.name 
+        }
+
+        console.log(newItem);
+        // Add item via addItem action
+        this.props.addItem(newItem);
+
+        // close the modal 
+        this.toggle();
+    }
 
     render() {
         return (
@@ -44,7 +61,7 @@ class ItemModal extends React.Component {
                     Add To Shopping List
                 </ModalHeader>
                 <ModalBody>
-                    <Form onSubmit={this.submit}>
+                    <Form onSubmit={this.onSubmit}>
                         <FormGroup>
                             <Label for="item">Item</Label>
                             <Input 
@@ -54,6 +71,13 @@ class ItemModal extends React.Component {
                                 placeholder="Add shopping item"
                                 onChange={this.onChange}
                             />
+                            <Button
+                                color="dark"
+                                style={{ marginTop: '2rem' }}
+                                block
+                            >
+                                Add Item 
+                            </Button>
                         </FormGroup>
                     </Form>
                 </ModalBody>
@@ -63,6 +87,11 @@ class ItemModal extends React.Component {
     }
 }
 
-export default connect(
+const mapStateToProps = state => {
+    return { item: state.items }
+}
 
+export default connect(
+    mapStateToProps,
+    { addItem }
 )(ItemModal);
