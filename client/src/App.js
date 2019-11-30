@@ -14,8 +14,10 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Appnavbar />
-        <ItemModal />
-        <ShoppingList />
+        <Container>
+          <ItemModal />
+          <ShoppingList />
+        </Container>
       </div>
     </Provider>
   );
